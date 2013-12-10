@@ -8,8 +8,8 @@
  *
  * @wordpress-plugin
  * Plugin Name:       responsive-io
- * Plugin URI:        @TODO
- * Description:       @TODO
+ * Plugin URI:        http://responsive.io/
+ * Description:       Adds support to the responsive.io service.
  * Version:           1.0.0
  * Author:            14islands
  * Author URI:        http://14islands.com
