@@ -13,9 +13,6 @@
  * Plugin class. This class should ideally be used to work with the
  * public-facing side of the WordPress site.
  *
- * If you're interested in introducing administrative or dashboard
- * functionality, then refer to `class-plugin-name-admin.php`
- *
  * @package Responsive_IO
  * @author  14islands <hello@14islands.com>
  */
@@ -263,7 +260,6 @@ class Responsive_IO {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		// wp_enqueue_style( $this->plugin_slug . '-plugin-styles', plugins_url( 'assets/css/public.css', __FILE__ ), array(), self::VERSION );
 	}
 
 	/**
@@ -272,7 +268,7 @@ class Responsive_IO {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'assets/js/public.js', __FILE__ ), array( 'jquery' ), self::VERSION );
+		wp_enqueue_script($this->plugin_slug . '-plugin-script', '//src.responsive.io/r.js');
 	}
 
 	/**
@@ -302,16 +298,44 @@ class Responsive_IO {
 	}
 
 	/**
-	 * NOTE:  Filters are points of execution in which WordPress modifies data
-	 *        before saving it or sending it to the browser.
-	 *
-	 *        Filters: http://codex.wordpress.org/Plugin_API#Filters
-	 *        Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
-	 *
-	 * @since    1.0.0
+	 * Get's the content that's about to be output
+	 * and fixes the images to follow the responsive.io service conventions.
+	 * @param  string $content the unmodified html
+	 * @return string          the modified html
 	 */
-	public function update_images() {
-		// @TODO: Define your filter hook callback here
+	public function update_images($content) {
+
+		// Create a DOMDocument object
+		$dom = new DOMDocument;
+
+		// We don't want to bother with white spaces
+		$dom->preserveWhiteSpace = false;
+
+		// Loads our content as HTML
+		$dom->loadHTML($content);
+
+		// Get all of our img tags
+		$images = $dom->getElementsByTagName('img');
+
+		foreach ($images as $image) {
+			$src = $image->getAttribute('src');
+
+			// Only interested in those who have a src set
+			if (empty($src)) {
+				continue;
+			}
+
+			// Add the src as a data-src attribute instead
+			$image->setAttribute('data-src', $src);
+
+			// Empty the src of this img
+			$image->setAttribute('src', '');
+
+		}
+
+		// Return our modified content
+		return $dom->saveHTML();
+
 	}
 
 }
