@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:       responsive.io
  * Plugin URI:        http://responsive.io/
- * Description:       This plugin will make sure all of the images in your content comply with the responsive.io script. Responsive.io takes care of delivering the image with the proper dimensions thus greatly speeding up your website.
+ * Description:       This plugin will make sure all of the images in your content comply with the responsive.io script. Responsive.io is a service takes care of delivering your images with the proper size dimensions thus greatly speeding up your website and doing the hard lifting for you.
  * Version:           1.0.0
  * Author:            14islands
  * Author URI:        http://14islands.com

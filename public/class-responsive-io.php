@@ -74,6 +74,9 @@ class Responsive_IO {
 		// add_action( '@TODO', array( $this, 'action_method_name' ) );
 		// add_filter( '@TODO', array( $this, 'filter_method_name' ) );
 		add_filter( 'the_content', array( $this, 'update_images' ) );
+		add_filter( 'acf_the_content', array( $this, 'update_images' ) );
+		// add_filter( 'acf/load_value/type=file', array( $this, 'my_acf_load_value' ) );
+		// add_filter( 'acf/load_value/type=gallery', array( $this, 'my_acf_load_value' ) );
 
 	}
 
@@ -308,7 +311,7 @@ class Responsive_IO {
 		// Create a DOMDocument object
 		$dom = new DOMDocument;
 
-		// We don't want to bother with white spaces
+		$dom->formatOutput = true;
 		$dom->preserveWhiteSpace = false;
 
 		// Loads our content as HTML
@@ -316,14 +319,26 @@ class Responsive_IO {
 
 		// Get all of our img tags
 		$images = $dom->getElementsByTagName('img');
+		// How many of them
+		$len = count($images);
 
-		foreach ($images as $image) {
+		// Loop through all the images in this content
+		for ($i = 0; $i <= $len; $i++) {
+
+			// Reference this current image
+			$image = $images->item($i);
+
+			// Get some attributes
 			$src = $image->getAttribute('src');
+			$alt = $image->getAttribute('alt');
 
 			// Only interested in those who have a src set
 			if (empty($src)) {
 				continue;
 			}
+
+			// Make our fallback image before changing this node
+			$fallback_image = $image->cloneNode();
 
 			// Add the src as a data-src attribute instead
 			$image->setAttribute('data-src', $src);
@@ -331,11 +346,28 @@ class Responsive_IO {
 			// Empty the src of this img
 			$image->setAttribute('src', '');
 
+			// Now prepare our <noscript> markup
+			// E.g <noscript><img src="foobar.jpg" /></noscript>
+			$noscript = $dom->createElement("noscript");
+			$noscript->appendChild( $fallback_image );
+
+			$dom->appendChild( $noscript );
+
 		}
 
 		// Return our modified content
 		return $dom->saveHTML();
 
+	}
+
+	function my_acf_load_value( $value, $post_id, $field ) {
+    // run the_content filter on all textarea values
+    // $value = apply_filters('the_content', $value);
+    // $value = $this->update_images( $value );
+
+    // $this->do_dump( $value, $post_id, $field );
+
+    return $value;
 	}
 
 }
