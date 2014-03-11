@@ -1,4 +1,4 @@
-=== wp-responsiveo-io ===
+=== responsive-io ===
 Contributors: 14islands
 Tags: responsive, images, rwd, responsive web design
 Requires at least: 3.5.1
@@ -14,8 +14,6 @@ This plugin optimizes and resizes all images in your content using the responsiv
 Responsive.io is a service that optimizes and delivers perfect images for every screen.
 
 We automatically pull images from your website, resize and optimize them for your visitors to speed up load time.
-
-This plugin will make sure the right images will be delivered to your site.
 
 Register your domain for a free trial at http://responsive.io.
 
