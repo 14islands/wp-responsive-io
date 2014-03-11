@@ -6,6 +6,8 @@ Tested up to: 3.6
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+GitHub Plugin URI: https://github.com/14islands/wp-reponsive-io
+GitHub Branch: master
 
 This plugin handles all the images tags in the post content to comply with the responsive.io service.
 More information here: https://responsive.io/
@@ -43,12 +45,12 @@ Coming soon.
 
 = How does it work? =
 
-It just works.
+It relies on Wordpress "the_content" filter to change the images before given handing over to the browser.
 
 == Changelog ==
 
-= 0.1 =
-* First version.
+= 1.0 =
+* Initial version. Changes images and check for [caption] to avoid conflicts.
 
 == Upgrade Notice ==
 
