@@ -2,18 +2,22 @@
 Contributors: 14islands
 Tags: responsive, images, rwd, responsive web design
 Requires at least: 3.5.1
-Tested up to: 3.6
+Tested up to: 3.8
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-GitHub Plugin URI: https://github.com/14islands/wp-reponsive-io
-GitHub Branch: master
 
-This plugin handles all the images tags in the post content to use with the http://responsive.io/ service.
+This plugin optimizes and resizes all images in your content using the responsive.io service. Sign up for a free 30 day trial at http://responsive.io.
 
 == Description ==
 
-Coming soon.
+Responsive.io is a service that optimizes and delivers perfect images for every screen.
+
+We automatically pull images from your website, resize and optimize them for your visitors to speed up load time.
+
+This plugin will make sure the right images will be delivered to your site.
+
+Register your domain for a free trial at http://responsive.io.
 
 == Installation ==
 
