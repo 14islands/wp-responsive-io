@@ -3,7 +3,7 @@ Contributors: 14islands
 Tags: responsive, images, rwd, responsive web design
 Requires at least: 3.5.1
 Tested up to: 3.8
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +14,16 @@ This plugin optimizes and resizes all images in your content using the responsiv
 Responsive.io is a service that optimizes and delivers perfect images for every screen.
 
 We automatically pull images from your website, resize and optimize them for your visitors to speed up load time.
+
+The plugin will make sure your tags are ready and that our javascript is loaded. All that unobtrusively without changing the content in your database.
+
+Features:
+- Images are automatically resized to fit any device.
+- Our global CDN delivers your images in milliseconds.
+- Retina support. High quality images for high density screens.
+- We use WebP, progressive JPG and clever optimizations to make your images smaller.
+- Our servers cache your images so they are ready to be served in all sizes.
+- No watermarks, no user-agent sniffing, no cookies, no extra HTTP requests. No bullshit.
 
 Register your domain for a free trial at http://responsive.io.
 
