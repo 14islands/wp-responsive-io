@@ -1,25 +1,25 @@
 <?php
-/**
- * @package   Responsive_IO
- * @author    14islands <hello@14islands.com>
- * @license   GPL-2.0+
- * @link      http://responsive.io
- * @copyright 2013 14islands
- *
- * @wordpress-plugin
- * Plugin Name:       responsive.io
- * Plugin URI:        http://responsive.io/
- * Description:       This plugin will make sure all of the images in your content comply with the responsive.io script. Responsive.io is a service takes care of delivering your images with the proper size dimensions thus greatly speeding up your website and doing the hard lifting for you.
- * Version:           1.0.0
- * Author:            14islands
- * Author URI:        http://14islands.com
- * Text Domain:       responsive-io-locale
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Domain Path:       /languages
- * GitHub Plugin URI: https://github.com/14islands/wp-reponsive-io
- * GitHub Branch:     master
- */
+/*
+@package   Responsive_IO
+@author    14islands <hello@14islands.com>
+@license   GPL-2.0+
+@link      http://responsive.io
+@copyright 2013 14islands
+
+@wordpress-plugin
+Version:           1.0.0
+Plugin Name:       responsive.io
+Plugin URI:        http://responsive.io/
+Description:       This plugin will make sure all of the images in your content comply with the responsive.io script. Responsive.io is a service takes care of delivering your images with the proper size dimensions thus greatly speeding up your website and doing the hard lifting for you.
+Author:            14islands
+Author URI:        http://14islands.com
+Text Domain:       responsive-io-locale
+License:           GPL-2.0+
+License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+Domain Path:       /languages
+GitHub Plugin URI: https://github.com/14islands/wp-reponsive-io
+GitHub Branch:     master
+*/
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
