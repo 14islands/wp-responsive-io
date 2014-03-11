@@ -49,19 +49,6 @@ add_action( 'plugins_loaded', array( 'Responsive_IO', 'get_instance' ) );
  *----------------------------------------------------------------------------*/
 
 /*
- * @TODO:
- *
- * - `class-plugin-admin.php` is the name of the plugin's admin file
- * - Responsive_IO_Admin is the name of the class defined in
- *   `class-responsive-io-admin.php`
- *
- * If you want to include Ajax within the dashboard, change the following
- * conditional to:
- *
- * if ( is_admin() ) {
- *   ...
- * }
- *
  * The code below is intended to to give the lightest footprint possible.
  */
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
