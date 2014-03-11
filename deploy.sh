@@ -1,6 +1,7 @@
 #! /bin/bash
 # A modification of Dean Clatworthy's deploy script as found here: https://github.com/deanc/wordpress-plugin-git-svn
 # The difference is that this script lives in the plugin's git repo & doesn't require an existing SVN repo.
+# https://gist.github.com/BFTrick/3767319
 
 # main config
 PLUGINSLUG="responsive-io"
