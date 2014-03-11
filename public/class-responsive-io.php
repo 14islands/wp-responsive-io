@@ -271,7 +271,9 @@ class Responsive_IO {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script($this->plugin_slug . '-plugin-script', '//src.responsive.io/r.js');
+		if (!wp_script_is($this->plugin_slug . '-plugin-script')) {
+			wp_enqueue_script($this->plugin_slug . '-plugin-script', '//src.responsive.io/r.js');
+		}
 	}
 
 	/**
@@ -300,6 +302,11 @@ class Responsive_IO {
 		// @TODO: Define your filter hook callback here
 	}
 
+	// private function create_noscript_tag($image) {
+	// 	$noscript = $dome->createElement("noscript");
+	// 	$noscript->appendChild( $fallback_image );
+	// }
+
 	/**
 	 * Get's the content that's about to be output
 	 * and fixes the images to follow the responsive.io service conventions.
@@ -308,25 +315,20 @@ class Responsive_IO {
 	 */
 	public function update_images($content) {
 
-		// Create a DOMDocument object
+		// Create a DOMDocument instance
 		$dom = new DOMDocument;
 
 		$dom->formatOutput = true;
 		$dom->preserveWhiteSpace = false;
 
 		// Loads our content as HTML
-		$dom->loadHTML($content);
+		$dom->loadHTML( $content );
 
 		// Get all of our img tags
 		$images = $dom->getElementsByTagName('img');
-		// How many of them
-		$len = count($images);
 
 		// Loop through all the images in this content
-		for ($i = 0; $i <= $len; $i++) {
-
-			// Reference this current image
-			$image = $images->item($i);
+		foreach ($images as $image) {
 
 			// Get some attributes
 			$src = $image->getAttribute('src');
@@ -337,8 +339,8 @@ class Responsive_IO {
 				continue;
 			}
 
-			// Make our fallback image before changing this node
-			$fallback_image = $image->cloneNode();
+			// Create our fallback image before changing this node
+			$imageClone = $image->cloneNode();
 
 			// Add the src as a data-src attribute instead
 			$image->setAttribute('data-src', $src);
@@ -347,16 +349,27 @@ class Responsive_IO {
 			$image->setAttribute('src', '');
 
 			// Now prepare our <noscript> markup
-			// E.g <noscript><img src="foobar.jpg" /></noscript>
 			$noscript = $dom->createElement("noscript");
-			$noscript->appendChild( $fallback_image );
 
-			$dom->appendChild( $noscript );
+			// Are we working with a caption here?
+			if (stripos($image->previousSibling->nodeValue, "[caption")) {
+				$noscriptNode = $image->parentNode->insertBefore( $noscript, $image->previousSibling );
+			} else {
+				$noscriptNode = $image->parentNode->insertBefore( $noscript, $image );
+			}
+
+			// Add the img node to the noscript node.
+			$fallback_image = $noscriptNode->appendChild($imageClone);
+			$fallback_image->setAttribute('src', $src);
+			$fallback_image->setAttribute('alt', $alt);
 
 		}
 
 		// Return our modified content
-		return $dom->saveHTML();
+		$html = $dom->saveHTML();
+		$html = preg_replace('~<(?:!DOCTYPE|/?(?:html|head|body))[^>]*>\s*~i', '', $html);
+
+		return $html;
 
 	}
 
