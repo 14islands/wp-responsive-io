@@ -9,8 +9,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 GitHub Plugin URI: https://github.com/14islands/wp-reponsive-io
 GitHub Branch: master
 
-This plugin handles all the images tags in the post content to comply with the responsive.io service.
-More information here: https://responsive.io/
+This plugin handles all the images tags in the post content to use with the http://responsive.io/ service.
 
 == Description ==
 
