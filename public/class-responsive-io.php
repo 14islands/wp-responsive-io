@@ -65,18 +65,13 @@ class Responsive_IO {
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
 		// Load public-facing style sheet and JavaScript.
-		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		/* Define custom functionality.
 		 * Refer To http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
-		// add_action( '@TODO', array( $this, 'action_method_name' ) );
-		// add_filter( '@TODO', array( $this, 'filter_method_name' ) );
 		add_filter( 'the_content', array( $this, 'update_images' ) );
 		add_filter( 'acf_the_content', array( $this, 'update_images' ) );
-		// add_filter( 'acf/load_value/type=file', array( $this, 'my_acf_load_value' ) );
-		// add_filter( 'acf/load_value/type=gallery', array( $this, 'my_acf_load_value' ) );
 
 	}
 
@@ -302,11 +297,6 @@ class Responsive_IO {
 		// @TODO: Define your filter hook callback here
 	}
 
-	// private function create_noscript_tag($image) {
-	// 	$noscript = $dome->createElement("noscript");
-	// 	$noscript->appendChild( $fallback_image );
-	// }
-
 	/**
 	 * Get's the content that's about to be output
 	 * and fixes the images to follow the responsive.io service conventions.
@@ -371,16 +361,6 @@ class Responsive_IO {
 
 		return $html;
 
-	}
-
-	function my_acf_load_value( $value, $post_id, $field ) {
-    // run the_content filter on all textarea values
-    // $value = apply_filters('the_content', $value);
-    // $value = $this->update_images( $value );
-
-    // $this->do_dump( $value, $post_id, $field );
-
-    return $value;
 	}
 
 }
