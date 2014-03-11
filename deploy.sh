@@ -40,18 +40,18 @@ echo -e "Enter a commit message for this new version: \c"
 read COMMITMSG
 git commit -am "$COMMITMSG"
 
-echo "Tagging new version in git"
+echo "> Tagging new version in git"
 git tag -a "$NEWVERSION1" -m "Tagging version $NEWVERSION1"
 
-echo "Pushing latest commit to origin, with tags"
+echo "> Pushing latest commit to origin, with tags"
 git push origin master
 git push origin master --tags
 
 echo
-echo "Creating local copy of SVN repo ..."
+echo "> Creating local copy of SVN repo ..."
 svn co $SVNURL $SVNPATH
 
-echo "Exporting the HEAD of master from git to the trunk of SVN"
+echo "> Exporting the HEAD of master from git to the trunk of SVN"
 git checkout-index -a -f --prefix=$SVNPATH/trunk/
 
 echo "Ignoring github specific & deployment script"
@@ -60,30 +60,30 @@ README.md
 .git
 .gitignore" "$SVNPATH/trunk/"
 
-echo "Moving assets-wp-repo"
+echo "> Moving assets-wp-repo"
 mkdir $SVNPATH/assets/
 mv $SVNPATH/trunk/assets-wp-repo/* $SVNPATH/assets/
 svn add $SVNPATH/assets/
 svn delete $SVNPATH/trunk/assets-wp-repo
 
-echo "Changing directory to SVN"
+echo "> Changing directory to SVN"
 cd $SVNPATH/trunk/
 # Add all new files that are not set to be ignored
 svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn add
-echo "committing to trunk"
+echo "> committing to trunk"
 svn commit --username=$SVNUSER -m "$COMMITMSG"
 
-echo "Updating WP plugin repo assets & committing"
+echo "> Updating WP plugin repo assets & committing"
 cd $SVNPATH/assets/
 svn commit --username=$SVNUSER -m "Updating wp-repo-assets"
 
-echo "Creating new SVN tag & committing it"
+echo "> Creating new SVN tag & committing it"
 cd $SVNPATH
 svn copy trunk/ tags/$NEWVERSION1/
 cd $SVNPATH/tags/$NEWVERSION1
 svn commit --username=$SVNUSER -m "Tagging version $NEWVERSION1"
 
-echo "Removing temporary directory $SVNPATH"
+echo "> Removing temporary directory $SVNPATH"
 rm -fr $SVNPATH/
 
 echo "*** FIN ***"
