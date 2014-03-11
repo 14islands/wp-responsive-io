@@ -48,7 +48,7 @@ It relies on Wordpress "the_content" filter to change the images before given ha
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 * Initial version. Changes images and check for [caption] to avoid conflicts.
 
 == Upgrade Notice ==
