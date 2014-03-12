@@ -1,6 +1,6 @@
 === responsive-io ===
 Contributors: 14islands
-Tags: responsive, images, rwd, responsive web design
+Tags: responsive, images, rwd, responsive web design, responsive images
 Requires at least: 3.5.1
 Tested up to: 3.8
 Stable tag: 1.0.3
@@ -57,7 +57,7 @@ Register your domain for a free trial at http://responsive.io.
 
 = How does it work? =
 
-It relies on Wordpress "the_content" filter to change the images before given handing over to the browser.
+It relies on Wordpress "the_content" filter to change the images before handing over the output to the browser.
 
 == Changelog ==
 
