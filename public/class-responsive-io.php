@@ -349,9 +349,7 @@ class Responsive_IO {
 			}
 
 			// Add the img node to the noscript node.
-			$fallback_image = $noscriptNode->appendChild($imageClone);
-			$fallback_image->setAttribute('src', $src);
-			$fallback_image->setAttribute('alt', $alt);
+			$noscriptNode->appendChild( $imageClone );
 
 		}
 
