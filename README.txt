@@ -63,6 +63,7 @@ It relies on Wordpress "the_content" filter to change the images before handing 
 
 = 1.0.0 =
 * Initial version. Changes images and check for [caption] to avoid conflicts.
+
 = 1.0.4 =
 * Bug fix version. Lower the priority to further avoid other filters conflicts.
 
