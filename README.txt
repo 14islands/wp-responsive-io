@@ -3,7 +3,7 @@ Contributors: 14islands
 Tags: responsive, images, rwd, responsive web design, responsive images
 Requires at least: 3.5.1
 Tested up to: 3.8
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,8 @@ It relies on Wordpress "the_content" filter to change the images before handing 
 
 = 1.0.0 =
 * Initial version. Changes images and check for [caption] to avoid conflicts.
+= 1.0.4 =
+* Bug fix version. Lower the priority to further avoid other filters conflicts.
 
 == Upgrade Notice ==
 
