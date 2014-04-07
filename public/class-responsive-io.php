@@ -70,9 +70,54 @@ class Responsive_IO {
 		/* Define custom functionality.
 		 * Refer To http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
-		add_filter( 'the_content', array( $this, 'update_images' ) );
-		add_filter( 'acf_the_content', array( $this, 'update_images' ) );
+		add_filter( 'the_content', array( $this, 'update_images' ), 20 );
+		add_filter( 'acf_the_content', array( $this, 'update_images' ), 20 );
 
+		// WIP cropping feature filters
+		// add_filter( 'attachment_fields_to_edit', array( $this, 'image_cropping_field' ) );
+		// add_filter( 'edit_attachment', array( $this, 'image_cropping_field_save' ) );
+
+	}
+
+	/**
+	 * Adds a cropping fields to the media uploader.
+	 *
+	 * @param  Array $form_fields $form_fields already set to be displayed.
+	 * @param  Object $post       $post object containing information such as ID.
+	 * @return Array              $form_fields with additional fields
+	 */
+	public function image_cropping_field( $form_fields, $post ) {
+
+		$field_value = get_post_meta( $post->ID, 'rio-cropping', true );
+
+		$form_fields['rio-image-focus'] = array(
+			'label' => 'Cropping',
+			'input' => 'button',
+			'value' => $field_value ? $field_value : '',
+			'helps' => 'If provided, photo credit will be displayed',
+		);
+
+		return $form_fields;
+	}
+
+	/**
+	 * Saves the values of image cropping in the media uploader.
+	 *
+	 * @param  Object $post      $post object containing some post information.
+	 * @param  Array $attachment The $attachment field.
+	 * @return [type]             $post object with updated meta.
+	 */
+	public function image_cropping_field_save( $post, $attachment ) {
+
+		if ( isset( $_REQUEST['attachments'][$attachment_id]['rio-cropping'] ) ) {
+      $rio_cropping = $_REQUEST['attachments'][$attachment_id]['rio-cropping'];
+      update_post_meta( $attachment_id, 'rio-cropping', $rio_cropping );
+    }
+
+		if( isset( $attachment['rio-cropping'] ) )
+			update_post_meta( $post['ID'], 'rio-cropping', $attachment['rio-cropping'] );
+
+		return $post;
 	}
 
 	/**
@@ -311,8 +356,12 @@ class Responsive_IO {
 		$dom->formatOutput = true;
 		$dom->preserveWhiteSpace = false;
 
+		if (empty($content)) {
+			return;
+		}
+
 		// Loads our content as HTML
-		$dom->loadHTML( $content );
+		@$dom->loadHTML( $content );
 
 		// Get all of our img tags
 		$images = $dom->getElementsByTagName('img');
@@ -341,14 +390,10 @@ class Responsive_IO {
 			// Now prepare our <noscript> markup
 			$noscript = $dom->createElement("noscript");
 
-			// Are we working with a caption here?
-			if (stripos($image->previousSibling->nodeValue, "[caption")) {
-				$noscriptNode = $image->parentNode->insertBefore( $noscript, $image->previousSibling );
-			} else {
-				$noscriptNode = $image->parentNode->insertBefore( $noscript, $image );
-			}
+			// Insert it
+			$noscriptNode = $image->parentNode->insertBefore( $noscript, $image );
 
-			// Add the img node to the noscript node.
+			// Append the image fallback
 			$noscriptNode->appendChild( $imageClone );
 
 		}
