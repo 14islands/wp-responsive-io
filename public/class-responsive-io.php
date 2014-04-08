@@ -312,7 +312,7 @@ class Responsive_IO {
 	 */
 	public function enqueue_scripts() {
 		if (!wp_script_is($this->plugin_slug . '-plugin-script')) {
-			wp_enqueue_script($this->plugin_slug . '-plugin-script', '//src.responsive.io/r.js');
+			wp_enqueue_script($this->plugin_slug . '-plugin-script', '//src.responsive.io/r.js', false, false, true);
 		}
 	}
 
