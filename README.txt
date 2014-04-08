@@ -70,6 +70,7 @@ It relies on Wordpress "the_content" filter to change the images before handing 
 = 1.0.5 =
 * Bug fix version. Making sure the scripts loads at the footer.
 
+
 == Upgrade Notice ==
 
 * None yet.
