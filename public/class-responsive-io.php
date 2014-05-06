@@ -312,7 +312,8 @@ class Responsive_IO {
 	 */
 	public function enqueue_scripts() {
 		if (!wp_script_is($this->plugin_slug . '-plugin-script')) {
-			wp_enqueue_script($this->plugin_slug . '-plugin-script', '//src.responsive.io/r.js', false, false, true);
+			wp_enqueue_script($this->plugin_slug . '-plugin-script', '//src.responsive.io/r.js', false, self::VERSION, true);
+			wp_enqueue_script( $this->plugin_slug . '-plugin-fallback-script', plugins_url( 'assets/js/r.js', __FILE__ ), false, self::VERSION, true );
 		}
 	}
 
