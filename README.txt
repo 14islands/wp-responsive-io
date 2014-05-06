@@ -3,7 +3,7 @@ Contributors: 14islands
 Tags: responsive, images, rwd, responsive web design, responsive images
 Requires at least: 3.5.1
 Tested up to: 3.9
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,7 +61,7 @@ It relies on Wordpress "the_content" filter to change the images before handing 
 
 == Changelog ==
 
-= 1.1.0 =
+= 1.1.1 =
 * Adding fallback script check. The fallback script will added to the queue and load in case the CDN fails.
 
 = 1.0.5 =
