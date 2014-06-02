@@ -71,7 +71,7 @@ class Responsive_IO {
 		 * Refer To http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
 		add_filter( 'the_content', array( $this, 'update_images' ), 20 );
-		add_filter( 'acf_the_content', array( $this, 'update_images' ), 20 );
+		add_filter( 'post_thumbnail_html', array( $this, 'update_images' ));
 
 		// WIP cropping feature filters
 		// add_filter( 'attachment_fields_to_edit', array( $this, 'image_cropping_field' ) );
