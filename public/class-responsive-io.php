@@ -25,7 +25,7 @@ class Responsive_IO {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.1.2';
 
 	/**
 	 * Unique identifier for your plugin.

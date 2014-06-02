@@ -3,7 +3,7 @@ Contributors: 14islands
 Tags: responsive, images, rwd, responsive web design, responsive images
 Requires at least: 3.5.1
 Tested up to: 3.9
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,9 @@ Register your domain for a free trial at http://responsive.io.
 It relies on Wordpress "the_content" filter to change the images before handing over the output to the browser.
 
 == Changelog ==
+
+= 1.1.2 =
+* Bug fix: removing acf filter to avoid charset conflicts.
 
 = 1.1.1 =
 * Adding fallback script check. The fallback script will added to the queue and load in case the CDN fails.

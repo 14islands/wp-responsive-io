@@ -6,7 +6,7 @@
 @link      http://responsive.io
 @copyright 2013 14islands
 @wordpress-plugin
-Version:           1.1.1
+Version:           1.1.2
 Plugin Name:       responsive.io
 Plugin URI:        http://responsive.io/
 Description:       This plugin optimizes and resizes all images in your content using the responsive.io service. Sign up for a free 30 day trial at http://responsive.io.
