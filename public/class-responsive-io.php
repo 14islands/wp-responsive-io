@@ -351,8 +351,10 @@ class Responsive_IO {
 	 */
 	public function update_images($content) {
 
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/SmartDOMDocument.class.php' );
+
 		// Create a DOMDocument instance
-		$dom = new DOMDocument;
+		$dom = new SmartDOMDocument();
 
 		$dom->formatOutput = true;
 		$dom->preserveWhiteSpace = false;
@@ -400,8 +402,7 @@ class Responsive_IO {
 		}
 
 		// Return our modified content
-		$html = $dom->saveHTML();
-		$html = preg_replace('~<(?:!DOCTYPE|/?(?:html|head|body))[^>]*>\s*~i', '', $html);
+		$html = $dom->saveHTMLExact();
 
 		return $html;
 
