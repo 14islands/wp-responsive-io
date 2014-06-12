@@ -61,6 +61,9 @@ It relies on Wordpress "the_content" filter to change the images before handing 
 
 == Changelog ==
 
+= 1.1.3 =
+* Bug fix: Using SmartDomDocument to avoid encoding issues.
+
 = 1.1.2 =
 * Bug fix: removing acf filter to avoid charset conflicts.
 
