@@ -25,7 +25,7 @@ class Responsive_IO {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.1.4';
+	const VERSION = '1.1.5';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -65,7 +65,8 @@ class Responsive_IO {
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
 		// Load public-facing style sheet and JavaScript.
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 100 );
+		add_action( 'wp_footer', array($this, 'write_fallback_script'), 110);
 
 		/* Define custom functionality.
 		 * Refer To http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
@@ -313,8 +314,24 @@ class Responsive_IO {
 	public function enqueue_scripts() {
 		if (!wp_script_is($this->plugin_slug . '-plugin-script')) {
 			wp_enqueue_script($this->plugin_slug . '-plugin-script', '//src.responsive.io/r.js', false, self::VERSION, true);
-			wp_enqueue_script( $this->plugin_slug . '-plugin-fallback-script', plugins_url( 'assets/js/r.js', __FILE__ ), false, self::VERSION, true );
 		}
+	}
+
+	/**
+	 * Adds the fallback check to load the script locally
+	 *
+	 * @since  1.1.5
+	 */
+	public function write_fallback_script() {
+    if( wp_script_is( $this->plugin_slug . '-plugin-script', 'done' ) ) {
+    ?>
+
+    <script type="text/javascript">
+    	window.ResponsiveIO || document.write('<script src="<?php echo plugins_url( 'assets/js/r.js', __FILE__ ); ?>"><\/script>');
+    </script>
+
+    <?php
+    }
 	}
 
 	/**
