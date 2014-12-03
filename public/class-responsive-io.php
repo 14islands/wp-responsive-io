@@ -391,10 +391,12 @@ class Responsive_IO {
 
 			// Get some attributes
 			$src = $image->getAttribute('src');
+			$ext = strtolower(pathinfo($src, PATHINFO_EXTENSION));
 			$alt = $image->getAttribute('alt');
 
 			// Only interested in those who have a src set
-			if (empty($src)) {
+			// and that are not gifs
+			if (empty($src) || strpos($ext, 'gif') !== false) {
 				continue;
 			}
 
