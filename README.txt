@@ -7,9 +7,11 @@ Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin optimizes and resizes all images in your content using the responsive.io service. Sign up for a free 30 day trial at http://responsive.io.
+This plugin optimizes and resizes all images in your content using the responsive.io service. Sign up for a free 30 day trial at (http://responsive.io)[http://responsive.io].
 
 == Description ==
+
+**Attention: the service has been discontinued. See [The future of responsive-io](http://blog.responsive.io/post/156620042296/the-future-of-responsiveio).**
 
 Responsive.io is a service that optimizes and delivers perfect images for every screen.
 
