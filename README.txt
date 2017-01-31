@@ -3,7 +3,7 @@ Contributors: 14islands
 Tags: responsive, images, rwd, responsive web design, responsive images
 Requires at least: 3.5.1
 Tested up to: 4.3
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,7 +11,7 @@ This plugin optimizes and resizes all images in your content using the responsiv
 
 == Description ==
 
-**Attention: the service has been discontinued. See [The future of responsive-io](http://blog.responsive.io/post/156620042296/the-future-of-responsiveio).**
+**Attention: responsive.io has been discontinued and this plugin is no longer maintained. See [The future of responsive-io](http://blog.responsive.io/post/156620042296/the-future-of-responsiveio).**
 
 Responsive.io is a service that optimizes and delivers perfect images for every screen.
 

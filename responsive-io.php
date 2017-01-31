@@ -6,10 +6,10 @@
 @link      http://responsive.io
 @copyright 2013 14islands
 @wordpress-plugin
-Version:           1.1.8
+Version:           1.1.9
 Plugin Name:       responsive.io
 Plugin URI:        http://wordpress.org/plugins/responsiveio/
-Description:       Attention: the service has been discontinued. See http://blog.responsive.io/post/156620042296/the-future-of-responsiveio. This plugin optimizes and resizes all images in your content using the responsive.io service.
+Description:       Attention: responsive.io has been discontinued and this plugin is no longer maintained. See http://blog.responsive.io/post/156620042296/the-future-of-responsiveio. This plugin optimizes and resizes all images in your content using the responsive.io service.
 Author:            14islands
 Author URI:        http://14islands.com
 Text Domain:       responsive-io-locale
